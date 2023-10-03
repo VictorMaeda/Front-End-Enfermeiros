@@ -48,7 +48,7 @@ function Login() {
     const emailInput = document.querySelector("#EmailLogin").value;
     const senhaInput = document.querySelector("#SenhaLogin").value;
     try {
-      await loginService(emailInput, senhaInput);
+      loginService(emailInput, senhaInput);
       toast.success('Plantao cadastrado com sucesso!', {
         position: "top-right",
         autoClose: 2000,

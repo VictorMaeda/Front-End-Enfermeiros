@@ -10,19 +10,21 @@ export async function registerService(usuario) {
   });
 }
 
-export async function loginService(email, senha) {
-  try {
-    const response = await api.post('/auth/login', {
+export function loginService(email, senha) {
+  return api
+    .post('/auth/login', {
       "email": email,
       "senha": senha,
+    })
+    .then((response) => {
+      sessionStorage.setItem('token', JSON.stringify(response.data));
+    })
+    .catch((error) => {
+      throw error;
     });
-
-    sessionStorage.setItem('token', JSON.stringify(response.data));
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
 }
+
+
 
 
 
